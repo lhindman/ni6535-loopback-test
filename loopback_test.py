@@ -222,7 +222,11 @@ class NI6535LoopbackTest:
         print(f"Total Tests:  {total_passed + total_failed}")
         print(f"Passed:       {total_passed}")
         print(f"Failed:       {total_failed}")
-        print(f"Success Rate: {100.0 * total_passed / (total_passed + total_failed):.1f}%")
+        total_tests = total_passed + total_failed
+        if total_tests > 0:
+            print(f"Success Rate: {100.0 * total_passed / total_tests:.1f}%")
+        else:
+            print("Success Rate: N/A (no tests run)")
         print("=" * 60)
         
         if total_failed > 0:

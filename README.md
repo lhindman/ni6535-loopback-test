@@ -1,12 +1,12 @@
 # NI PCIe-6535 Loopback Test
 
-This Python program tests the port read functionality of the NI PCIe-6535 digital I/O board by performing loopback tests between ports 1 & 3 and 2 & 4.
+This Python program tests the port read functionality of the NI PCIe-6535 digital I/O board by performing loopback tests between ports 0 & 2 and 1 & 3.
 
 ## Hardware Setup
 
 Before running the test, connect the following ports with appropriate wiring:
-- **Port 1 to Port 3** (all 8 channels: DIO0-DIO7 to DIO16-DIO23)
-- **Port 2 to Port 4** (all 8 channels: DIO8-DIO15 to DIO24-DIO31)
+- **Port 0 to Port 2** (all 8 channels: DIO0-DIO7 to DIO16-DIO23)
+- **Port 1 to Port 3** (all 8 channels: DIO8-DIO15 to DIO24-DIO31)
 
 ## Installation
 
@@ -32,10 +32,10 @@ python loopback_test.py --device Dev2
 
 The program performs comprehensive loopback testing:
 
-1. **Port 1 → Port 3**: Write test patterns to Port 1, read from Port 3
-2. **Port 3 → Port 1**: Write test patterns to Port 3, read from Port 1
-3. **Port 2 → Port 4**: Write test patterns to Port 2, read from Port 4
-4. **Port 4 → Port 2**: Write test patterns to Port 4, read from Port 2
+1. **Port 0 → Port 2**: Write test patterns to Port 0, read from Port 2
+2. **Port 2 → Port 0**: Write test patterns to Port 2, read from Port 0
+3. **Port 1 → Port 3**: Write test patterns to Port 1, read from Port 3
+4. **Port 3 → Port 1**: Write test patterns to Port 3, read from Port 1
 
 ### Test Patterns
 

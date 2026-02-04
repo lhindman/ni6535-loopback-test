@@ -3,17 +3,17 @@
 NI PCIe-6535 Loopback Test Program
 
 This program tests the port read functionality of the NI PCIe-6535 board
-by performing loopback tests between ports 1&3 and ports 2&4.
+by performing loopback tests between ports 0&2 and ports 1&3.
 
 Hardware Setup:
+- Connect Port 0 to Port 2 (all 8 channels)
 - Connect Port 1 to Port 3 (all 8 channels)
-- Connect Port 2 to Port 4 (all 8 channels)
 
 The test will:
-1. Write patterns to Port 1 and verify on Port 3
-2. Write patterns to Port 3 and verify on Port 1
-3. Write patterns to Port 2 and verify on Port 4
-4. Write patterns to Port 4 and verify on Port 2
+1. Write patterns to Port 0 and verify on Port 2
+2. Write patterns to Port 2 and verify on Port 0
+3. Write patterns to Port 1 and verify on Port 3
+4. Write patterns to Port 3 and verify on Port 1
 
 Test patterns include:
 - All zeros (0x00)
@@ -196,22 +196,22 @@ class NI6535LoopbackTest:
         total_failed = 0
         
         # Test Port 1 -> Port 3
-        passed, failed = self.test_port_pair(1, 3, "Port 1 -> Port 3")
+        passed, failed = self.test_port_pair(0, 2, "Port 0 -> Port 2")
         total_passed += passed
         total_failed += failed
         
         # Test Port 3 -> Port 1
-        passed, failed = self.test_port_pair(3, 1, "Port 3 -> Port 1")
+        passed, failed = self.test_port_pair(2, 0, "Port 2 -> Port 0")
         total_passed += passed
         total_failed += failed
         
         # Test Port 2 -> Port 4
-        passed, failed = self.test_port_pair(2, 4, "Port 2 -> Port 4")
+        passed, failed = self.test_port_pair(1, 3, "Port 1 -> Port 3")
         total_passed += passed
         total_failed += failed
         
         # Test Port 4 -> Port 2
-        passed, failed = self.test_port_pair(4, 2, "Port 4 -> Port 2")
+        passed, failed = self.test_port_pair(3, 1, "Port 3 -> Port 1")
         total_passed += passed
         total_failed += failed
         
@@ -251,8 +251,8 @@ def main():
         epilog="""
 Hardware Setup:
   Connect the following ports for loopback testing:
+    - Port 0 to Port 2 (all 8 channels)
     - Port 1 to Port 3 (all 8 channels)
-    - Port 2 to Port 4 (all 8 channels)
     
 Examples:
   # Run test with default device (Dev1)
